@@ -25,3 +25,13 @@ def data(inf):
     inf.update('O'+line,all.acell("P2").value)
     inf.update('P'+line,all.acell("Q2").value)
     inf.update('Q1',int(l)+1)
+while True:
+    team=all.acell('A2').value
+    if team!=None:
+        data(sheet.worksheet(team))
+        all.delete_row(2)
+        time.sleep(20)
+    else:
+        print("沒有比賽")
+        time.sleep(5)
+    print(0)
