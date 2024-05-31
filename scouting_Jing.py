@@ -24,7 +24,7 @@ def data(inf):
     inf.update('N'+line,int(all.acell("O2").value))
     inf.update('O'+line,all.acell("P2").value)
     inf.update('P'+line,all.acell("Q2").value)
-    inf.update('Q1',int(l)+1)
+    inf.update('Q1',int(line)+1)
 while True:
     team=all.acell('A2').value
     if team!=None:
