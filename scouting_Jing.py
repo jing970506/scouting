@@ -6,7 +6,7 @@ json_path=pathlib.Path(file_path).parent/"scouting-jing-4c9747d8a2c5.json"
 account=gspread.service_account(json_path)
 sheet=account.open("scouting")
 aii=sheet.worksheet("All")
-print(sheet.worksheet("1").acell("Q1").value)
+
 team=None
 def data(inf):
     global aii
