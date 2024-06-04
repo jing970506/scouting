@@ -5,31 +5,32 @@ file_path=pathlib.Path(__file__)
 json_path=pathlib.Path(file_path).parent/"scouting-jing-4c9747d8a2c5.json"
 account=gspread.service_account(json_path)
 sheet=account.open("scouting")
-all=sheet.worksheet("All")
-
+aii=sheet.worksheet("All")
+print(sheet.worksheet("1").acell("Q1").value)
 team=None
 def data(inf):
-    line = inf.acell("Q1").value
-    inf.update('A'+line,all.acell("B2").value)
-    inf.update('C'+line,int(all.acell("D2").value))
-    inf.update('D'+line,all.acell("E2").value)
-    inf.update('E'+line,all.acell("F2").value)
-    inf.update('G'+line,all.acell("H2").value)
-    inf.update('H'+line,int(all.acell("I2").value))
-    inf.update('I'+line,int(all.acell("J2").value))
-    inf.update('J'+line,int(all.acell("K2").value))
-    inf.update('K'+line,int(all.acell("L2").value))
-    inf.update('L'+line,all.acell("M2").value)
-    inf.update('M'+line,all.acell("N2").value)
-    inf.update('N'+line,int(all.acell("O2").value))
-    inf.update('O'+line,all.acell("P2").value)
-    inf.update('P'+line,all.acell("Q2").value)
+    global aii
+    line = inf.acell("Q1").value()
+    inf.update('A'+line,aii.acell("B2").value)
+    inf.update('C'+line,int(aii.acell("D2").value))
+    inf.update('D'+line,aii.acell("E2").value)
+    inf.update('E'+line,aii.acell("F2").value)
+    inf.update('G'+line,aii.acell("H2").value)
+    inf.update('H'+line,int(aii.acell("I2").value))
+    inf.update('I'+line,int(aii.acell("J2").value))
+    inf.update('J'+line,int(aii.acell("K2").value))
+    inf.update('K'+line,int(aii.acell("L2").value))
+    inf.update('L'+line,aii.acell("M2").value)
+    inf.update('M'+line,aii.acell("N2").value)
+    inf.update('N'+line,int(aii.acell("O2").value))
+    inf.update('O'+line,aii.acell("P2").value)
+    inf.update('P'+line,aii.acell("Q2").value)
     inf.update('Q1',int(line)+1)
 while True:
-    team=all.acell('A2').value
+    team = aii.acell('A2').value
     if team!=None:
         data(sheet.worksheet(team))
-        all.delete_row(2)
+        aii.delete_rows(2)
         time.sleep(20)
     else:
         print("沒有比賽")
