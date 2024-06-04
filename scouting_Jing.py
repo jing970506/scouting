@@ -10,7 +10,7 @@ aii=sheet.worksheet("All")
 team=None
 def data(inf):
     global aii
-    line = inf.acell("Q1").value()
+    line = inf.acell("Q1").value
     inf.update('A'+line,aii.acell("B2").value)
     inf.update('C'+line,int(aii.acell("D2").value))
     inf.update('D'+line,aii.acell("E2").value)
